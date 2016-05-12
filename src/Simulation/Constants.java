@@ -25,7 +25,7 @@ public class Constants {
 	
 	public static final double armLength = 300;
 	
-	public static final double railWidth = 5000.0;
+	public static final double railWidth = 1000.0;
 	
 	
 	/** Graphics Constants **/
