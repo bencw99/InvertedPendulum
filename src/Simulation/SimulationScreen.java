@@ -1,12 +1,10 @@
 package Simulation;
+
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.event.*;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
-import Balancer.Balancer;
+import javax.swing.*;
+import Balancer.*;
 
 public class SimulationScreen extends JPanel {	
 	public static Pendulum pendulum;
@@ -24,7 +22,7 @@ public class SimulationScreen extends JPanel {
 		frame.add(panel);
 		frame.setVisible(true);
 		
-		pendulum = new Pendulum(Math.PI/2, 0, Constants.standardMass, Constants.standardLength, new Base(0, 0, Constants.standardMass), true);
+		pendulum = new Pendulum(Math.PI/2 + 0.001, 0, Constants.ballMass, Constants.armLength, new Base(0, 0, Constants.baseMass));
 		Balancer.pendulum = pendulum;
 		
 		time = 0.0;
@@ -37,7 +35,7 @@ public class SimulationScreen extends JPanel {
 				pendulum.update();
 				
 				frame.repaint();
-				Thread.sleep((int) (1000/Constants.updateRate));
+				Thread.sleep((int) (1000/(Constants.speed*Constants.updateRate)));
 				
 				Balancer.updatePendulum();
 			}
@@ -53,7 +51,7 @@ public class SimulationScreen extends JPanel {
 				}
 				
 				averageTime += time;
-				pendulum = new Pendulum(Math.PI/2, 0, Constants.standardMass, Constants.standardLength, new Base(0, 0, Constants.standardMass), true);
+				pendulum = new Pendulum(Math.PI/2, 0, Constants.ballMass, Constants.armLength, new Base(0, 0, Constants.baseMass));
 				Balancer.pendulum = pendulum;
 				
 				time = 0.0;
