@@ -2,11 +2,13 @@ package Simulation;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.*;
 import Balancer.*;
 
-public class SimulationScreen extends JPanel {	
+public class SimulationScreen extends JPanel implements KeyListener {	
 	public static Pendulum pendulum;
 	public static double time;
 	public static double averageTime;
@@ -19,6 +21,7 @@ public class SimulationScreen extends JPanel {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		SimulationScreen panel = new SimulationScreen();
+		frame.addKeyListener(panel);
 		frame.add(panel);
 		frame.setVisible(true);
 		
@@ -73,5 +76,29 @@ public class SimulationScreen extends JPanel {
 		else {
 			graphics.drawString("Average Time: " + ((double)(int)(averageTime*100))/100, 50, 50);
 		}
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		int code = e.getKeyCode();
+		
+		if(code == KeyEvent.VK_LEFT) {
+			pendulum.changeVelocity(-2);
+		}
+		if(code == KeyEvent.VK_RIGHT) {
+			pendulum.changeVelocity(2);
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }

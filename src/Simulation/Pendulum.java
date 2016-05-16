@@ -43,8 +43,8 @@ public class Pendulum {
 	 * Updates base as well
 	 */
 	void update() {
-		double acceleration = -Constants.gravity * Math.cos(angle) / length - outsideForce * Math.sin(angle) / (length * mass);
 		double forceOnBase = mass * Constants.gravity * Math.cos(angle) * Math.sin(angle);
+		double acceleration = -Constants.gravity * Math.cos(angle) / length - (outsideForce + forceOnBase) * Math.sin(angle) / (length * base.getMass());
 		
 		base.setForce(forceOnBase);
 		base.addForce(outsideForce);
@@ -72,6 +72,10 @@ public class Pendulum {
 	
 	public double getVelocity() {
 		return velocity;
+	}
+	
+	double changeVelocity(double change) {
+		return velocity += change;
 	}
 	
 	/**

@@ -11,17 +11,18 @@ public class Constants {
 	public static final double speed = 1.0;
 	public static final int simulationTrials = 10000;
 	
+	
 	/** World Specifications **/
 	
-	public static final double gravity = 10000.0;
-	public static final double noiseFactor = 10;
-	public static final double pushForce = 5000.0;
+	public static final double gravity = 5000.0;
+	public static final double noiseFactor = 1;
+	public static final double pushForce = 20000.0;
 	
 	
 	/** Pendulum Specifications **/
 	
-	public static final double ballMass = 2.0;
-	public static final double baseMass = 2.0;
+	public static final double ballMass = 1.0;
+	public static final double baseMass = 1.0;
 	
 	public static final double armLength = 300;
 	

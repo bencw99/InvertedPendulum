@@ -49,6 +49,10 @@ public class Base {
 		this.force += force;
 	}
 	
+	double getMass() {
+		return mass;
+	}
+	
 	public double getPosition() {
 		return position;
 	}
