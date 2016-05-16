@@ -18,6 +18,9 @@ public class Pendulum {
 	/** The outside push force exerted on the base this update cycle **/
 	private double outsideForce;
 	
+	/** The force determining noise **/
+	private double noiseForce;
+	
 	/** The base of this pendulum **/
 	private Base base;
 	
@@ -36,6 +39,7 @@ public class Pendulum {
 		this.mass = mass;
 		this.length = length;
 		this.base = base;
+		this.noiseForce = 0.0;
 	}
 	
 	/**
@@ -43,14 +47,17 @@ public class Pendulum {
 	 * Updates base as well
 	 */
 	void update() {
+		noiseForce += Constants.noiseFactor * (Math.random() - 0.5) / (Constants.updateRate);
+		noiseForce = Math.max(Math.min(noiseForce, Constants.maximumNoiseForce), -Constants.maximumNoiseForce);
+		
 		double forceOnBase = mass * Constants.gravity * Math.cos(angle) * Math.sin(angle);
-		double acceleration = -Constants.gravity * Math.cos(angle) / length - (outsideForce + forceOnBase) * Math.sin(angle) / (length * base.getMass());
+		double acceleration = -Constants.gravity * Math.cos(angle) / length - (outsideForce + forceOnBase) * Math.sin(angle) / (length * base.getMass()) + noiseForce*Math.sin(angle);
 		
 		base.setForce(forceOnBase);
 		base.addForce(outsideForce);
 		base.update();
 		
-		velocity += acceleration / Constants.updateRate - Constants.noiseFactor * (Math.random() - 0.5) / (Constants.updateRate);
+		velocity += acceleration / Constants.updateRate;
 		angle += velocity / Constants.updateRate;
 	}
 	

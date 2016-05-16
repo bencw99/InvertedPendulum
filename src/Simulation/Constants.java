@@ -15,7 +15,8 @@ public class Constants {
 	/** World Specifications **/
 	
 	public static final double gravity = 5000.0;
-	public static final double noiseFactor = 1;
+	public static final double noiseFactor = 0.0;
+	public static final double maximumNoiseForce = 0.0;
 	public static final double pushForce = 20000.0;
 	
 	
