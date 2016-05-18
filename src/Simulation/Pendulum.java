@@ -24,6 +24,9 @@ public class Pendulum {
 	/** The base of this pendulum **/
 	private Base base;
 	
+	/** The random color of this pendulum **/
+	private Color randomColor;
+	
 	/**
 	 * Parameterized constructor, initializes all variables through setters
 	 * 
@@ -40,6 +43,7 @@ public class Pendulum {
 		this.length = length;
 		this.base = base;
 		this.noiseForce = 0.0;
+		this.randomColor = new Color(((int) (255 * Math.random())), ((int) (255 * Math.random())), ((int) (255 * Math.random())));
 	}
 	
 	/**
@@ -107,7 +111,12 @@ public class Pendulum {
 		int massXPosition = pixelArmTerminalXPosition - Constants.massWidth/2;
 		int massYPosition = pixelArmTerminalYPosition - Constants.massWidth/2;
 		
-		graphics.setColor(Color.GRAY);
+		if(Constants.randomColor) {
+			graphics.setColor(randomColor);
+		}
+		else {
+			graphics.setColor(Color.GRAY);
+		}
 		graphics.fillOval(massXPosition, massYPosition, Constants.massWidth, Constants.massWidth);
 	}
 }

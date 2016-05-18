@@ -25,7 +25,7 @@ public class SimulationScreen extends JPanel implements KeyListener {
 		frame.add(panel);
 		frame.setVisible(true);
 		
-		pendulum = new Pendulum(Math.PI/2 + 0.001, 0, Constants.ballMass, Constants.armLength, new Base(0, 0, Constants.baseMass));
+		pendulum = new Pendulum(Math.PI/2, 0, Constants.ballMass, Constants.armLength, new Base(0, 0, Constants.baseMass));
 		Balancer.pendulum = pendulum;
 		
 		time = 0.0;
@@ -88,11 +88,25 @@ public class SimulationScreen extends JPanel implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		int code = e.getKeyCode();
 		
-		if(code == KeyEvent.VK_LEFT) {
-			pendulum.changeVelocity(-2);
-		}
-		if(code == KeyEvent.VK_RIGHT) {
-			pendulum.changeVelocity(2);
+		if(Constants.jolts) {
+			if(code == KeyEvent.VK_1) {
+				pendulum.changeVelocity(-3);
+			}
+			if(code == KeyEvent.VK_2) {
+				pendulum.changeVelocity(-2);
+			}
+			if(code == KeyEvent.VK_3) {
+				pendulum.changeVelocity(-1);
+			}
+			if(code == KeyEvent.VK_4) {
+				pendulum.changeVelocity(1);
+			}
+			if(code == KeyEvent.VK_5) {
+				pendulum.changeVelocity(2);
+			}
+			if(code == KeyEvent.VK_6) {
+				pendulum.changeVelocity(3);
+			}
 		}
 	}
 

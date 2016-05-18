@@ -10,6 +10,8 @@ public class Constants {
 	public static final double updateRate = 50.0;
 	public static final double speed = 1.0;
 	public static final int simulationTrials = 10000;
+	public static final boolean randomColor = false;
+	public static final boolean jolts = true;
 	
 	
 	/** World Specifications **/
